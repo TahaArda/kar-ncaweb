@@ -1,0 +1,158 @@
+/* Genel Stil */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+}
+
+
+/* Navbar stilleri */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, rgba(51, 51, 51, 0.6), rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.6));
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* Navbar yazıları için stil */
+.navbar a {
+    font-family: 'Poppins', sans-serif; /* Modern ve şık bir yazı tipi */
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Mouse üzerine gelindiğinde altına çizgi ekleme */
+.navbar a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background-color: #FFD700; /* Alt çizginin rengi (Altın Sarısı) */
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+/* Hover efekti */
+.navbar a:hover {
+    color: #FFD700; /* Hover durumunda yazının rengini değiştir */
+}
+
+.navbar a:hover::after {
+    width: 100%; /* Çizginin genişliği tam olsun */
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+/* Hero Bölümü */
+.hero {
+    height: 100vh;
+    background: url('karıncaarkaplan.webp') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 600px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Buton Stili */
+.btn {
+    display: inline-block;
+    background: #ffcc00;
+    color: black;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+#bilgi {
+    padding: 50px;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin-top: 50px;
+}
