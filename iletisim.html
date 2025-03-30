@@ -5,16 +5,277 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+    body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C1CFA1; /* Açık bej tonunda arka plan */
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: #2874a6;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #aed6f1;
+        }
+        
+        .main-content {
+            padding-top:20px; /* Navbar ile içerik arasına boşluk ekliyoruz */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .page-title {
+            text-align: center;
+            color: #1a5276;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .page-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #28b463;
+        }
+        
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .member-image {
+            height: 250px;
+            background-color: #d4e6f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .member-name {
+            color: #1a5276;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .member-role {
+            color: #28b463;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .member-bio {
+            color: #566573;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #2874a6;
+        }
+        
+        .email-btn { background-color: #e74c3c; }
+        .email-btn:hover { background-color: #c0392b; }
+        
+        .linkedin-btn { background-color: #2980b9; }
+        .linkedin-btn:hover { background-color: #1a5276; }
+        
+        .github-btn { background-color: #2c3e50; }
+        .github-btn:hover { background-color: #1a252f; }
+        
+        footer {
+            background-color: #89AC46;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 1rem;
+            }
+            
+            .team-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">Karınca Dünyası</div>
         <ul class="nav-links">
             <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="karıncalar hakkında.html">Hakkımızda</a></li>
+            <li><a href="karıncalar hakkında.html">Karıncalar Hakkında</a></li>
             <li><a href="oyun.html">Oyun</a></li>
             <li><a href="iletisim.html">İletişim</a></li>
         </ul>
     </nav>
+
+    <div class="main-content">
+    <div class="container">
+        <h1 class="page-title">Proje Ekibimiz</h1>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #566573;">
+            Karmed Dünyası projesi, karıncaların büyüleyici dünyasını keşfetmek için üç tutkulu bireyin bir araya gelmesiyle oluşmuştur. 
+            Aşağıda ekibimizin üyelerini ve iletişim bilgilerini bulabilirsiniz.
+        </p>
+        
+        <div class="team-section">
+            <!-- 1. Takım Üyesi -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="kızresmi.avif" alt="Sümeyye Kaçmaz">
+                </div>
+                <div class="member-info">
+                    <h2 class="member-name">Sümeyye Kaçmaz</h2>
+                    <p class="member-role">Öğrenci</p>
+                    <p class="member-bio">
+                        Karınca davranışları ve koloni yapıları üzerine uzmanlaşmış biyolog. 
+                        Projemizin bilimsel içeriklerinden sorumlu.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="sumeyyekacmaz98@gmail.com" class="contact-btn email-btn" title="E-posta">✉</a>
+                        <a href="#" class="contact-btn linkedin-btn" title="LinkedIn">in</a>
+                        <a href="https://github.com/sumeyye-kmz" class="contact-btn github-btn" title="GitHub">{}</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2. Takım Üyesi -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="ico_pro-01.png" alt="Taha Arda Gül">
+                </div>
+                <div class="member-info">
+                    <h2 class="member-name">Taha Arda Gül</h2>
+                    <p class="member-role">Öğrenci</p>
+                    <p class="member-bio">
+                        Sitemizin teknik altyapısı ve kullanıcı deneyiminden sorumlu. 
+                        Front-end ve back-end geliştirme konusunda uzman.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="gultahaarda@gmail.com" class="contact-btn email-btn" title="E-posta">✉</a>
+                        <a href="https://www.linkedin.com/in/taha-arda-g%C3%BCl-574a95264/" class="contact-btn linkedin-btn" title="LinkedIn">in</a>
+                        <a href="https://github.com/TahaArda" class="contact-btn github-btn" title="GitHub">{}</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. Takım Üyesi -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="kızresmi.avif" alt="Eflin Kanat">
+                </div>
+                <div class="member-info">
+                    <h2 class="member-name">Eflin Kanat</h2>
+                    <p class="member-role">Öğrenci</p>
+                    <p class="member-bio">
+                        Sitemizin görsel kimliği ve içerik stratejisinden sorumlu. 
+                        Kullanıcı dostu arayüzler tasarlıyor ve içerikler oluşturuyor.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="zeynepeflinkanat@gmail.com" class="contact-btn email-btn" title="E-posta">✉</a>
+                        <a href="#" class="contact-btn linkedin-btn" title="LinkedIn">in</a>
+                        <a href="https://github.com/Yeefflinn" class="contact-btn github-btn" title="GitHub">{}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-text">
+            <h3>Karmed Dünyası</h3>
+            <p>Karıncaların büyüleyici yaşamını keşfetmek için oluşturulmuş bir proje</p>
+            <p>&copy; 2025 Tüm Hakları Saklıdır</p>
+        </div>
+    </footer>
 </body>
 </html>
