@@ -5,6 +5,184 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --light-text: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1a252f);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 2.2rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background-color: var(--secondary-color);
+            border-radius: 3px;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-top: 25px;
+        }
+        
+        .ant-species {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .ant-species:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ant-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .habitat-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .habitat-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .habitat-card h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .purchase-info {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .info-table th, .info-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .info-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .info-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .fun-fact {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid var(--secondary-color);
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), #1a252f);
+            color: white;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .habitat-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -16,5 +194,151 @@
             <li><a href="iletisim.html">İletişim</a></li>
         </ul>
     </nav>
+
+    <div class="container">
+        <h1>Karıncalar Hakkında</h1>
+        
+        <p>Karıncalar, Formicidae familyasına ait sosyal böceklerdir ve dünya üzerinde 12.000'den fazla türü bulunmaktadır. İnanılmaz organizasyon becerileri, karmaşık sosyal yapıları ve ekosistemdeki kritik rolleriyle bilim insanlarının ve doğa severlerin ilgisini çekmektedirler. Bu bölümde farklı karınca türleri, yaşam alanları, davranışları ve koleksiyonerler için satış bilgileri hakkında detaylı bilgiler bulabilirsiniz.</p>
+        
+        <div class="fun-fact">
+            <strong>İlginç Bilgi:</strong> Dünya üzerindeki tüm karıncaların toplam ağırlığı, tüm insanların toplam ağırlığından daha fazladır!
+        </div>
+        
+        <h2>Popüler Karınca Türleri</h2>
+        
+        <div class="ant-species">
+            <h3>1. Camponotus (Odun Karıncaları)</h3>
+            <img src="img/marangoz karınca.jpg" alt="Camponotus Karıncası" class="ant-image">
+            <p><strong>Özellikler:</strong> Büyük boyutlu (5-15 mm), siyah veya kırmızımsı renklerde. Güçlü çenelere sahiptirler ve kolonileri genellikle 5.000-10.000 bireyden oluşur. Özellikle kraliçe karıncalar 15 mm'ye kadar ulaşabilir.</p>
+            <p><strong>Yaşam Alanı:</strong> Ağaç gövdeleri, ölü odunlar, bazen evlerin ahşap kısımları. Nemli ve korunaklı alanları tercih ederler.</p>
+            <p><strong>Davranış:</strong> Genellikle gece aktiftirler. Savunma mekanizmaları olarak formik asit püskürtebilirler.</p>
+            <p><strong>Fiyat Aralığı:</strong> <span class="price">150-300 TL</span> (kraliçe karınca başına)</p>
+        </div>
+        
+        <div class="ant-species">
+            <h3>2. Lasius (Sarı Karıncalar)</h3>
+            <img src="img/sarı karınca.webp" alt="Lasius Karıncası" class="ant-image">
+            <p><strong>Özellikler:</strong> Küçük boyutlu (2-5 mm), sarı veya açık kahverengi. Koloni büyüklükleri genellikle 3.000-5.000 bireyi bulur.</p>
+            <p><strong>Yaşam Alanı:</strong> Çimenlik alanlar, bahçeler, parklar. Toprak altında geniş yuva sistemleri kurarlar.</p>
+            <p><strong>Davranış:</strong> Bitki köklerindeki yaprak bitleriyle simbiyotik ilişki kurarlar. Yaprak bitlerini koruyarak onların salgıladığı tatlı sıvıyla beslenirler.</p>
+            <p><strong>Fiyat Aralığı:</strong> <span class="price">50-120 TL</span> (kraliçe karınca başına)</p>
+        </div>
+        
+        <div class="ant-species">
+            <h3>3. Messor (Hasatçı Karıncalar)</h3>
+            <img src="img/hasatçı karıncalar.jpg" alt="Messor Karıncası" class="ant-image">
+            <p><strong>Özellikler:</strong> Tohum toplayıcı, büyük başlı işçiler (3-10 mm). Kolonileri 10.000'e kadar birey içerebilir. İşçiler arasında belirgin bir boyut farkı (polimorfizm) görülür.</p>
+            <p><strong>Yaşam Alanı:</strong> Kurak bölgeler, step alanlar. Yuvalarını genellikle kumlu topraklara yaparlar.</p>
+            <p><strong>Davranış:</strong> Tohumları depolayarak "karınca ekmeği" adı verilen bir besin kaynağı oluştururlar. Yağmur sonrası aktif olarak tohum toplarlar.</p>
+            <p><strong>Fiyat Aralığı:</strong> <span class="price">200-400 TL</span> (kraliçe karınca başına)</p>
+        </div>
+        
+        <div class="ant-species">
+            <h3>4. Formica (Orman Karıncaları)</h3>
+            <img src="img/kırmızı karınca.webp" alt="Formica Karıncası" class="ant-image">
+            <p><strong>Özellikler:</strong> Orta boyutlu (4-9 mm), genellikle siyah-kırmızı renk kombinasyonları. Süper koloniler oluşturabilirler ve bazı türler kölecilik yapar.</p>
+            <p><strong>Yaşam Alanı:</strong> Ormanlık alanlar, ağaç dipleri. Büyük tepecikler oluşturarak yuva yaparlar.</p>
+            <p><strong>Davranış:</strong> Orman ekosisteminde önemli rol oynarlar. Zararlı böcek popülasyonlarını kontrol eder ve toprağı havalandırırlar.</p>
+            <p><strong>Fiyat Aralığı:</strong> <span class="price">180-350 TL</span> (kraliçe karınca başına)</p>
+        </div>
+        
+        <div class="ant-species">
+            <h3>5. Myrmica (Kırmızı Karıncalar)</h3>
+            <img src="img/kırmızı karınca 2.jpg" alt="Myrmica Karıncası" class="ant-image">
+            <p><strong>Özellikler:</strong> Küçük (3-5 mm) ve agresif, kırmızımsı renk. Kolonileri genellikle birkaç yüz bireyden oluşur.</p>
+            <p><strong>Yaşam Alanı:</strong> Nemli topraklar, çürüyen bitkiler altı. Çayırlık alanlarda sık görülürler.</p>
+            <p><strong>Davranış:</strong> Hızlı hareket ederler ve iğneleriyle sokabilirler. Alcon mavisi kelebeği gibi bazı türlerin larvaları bu karıncalar tarafından yuvanın içine alınır ve korunur.</p>
+            <p><strong>Fiyat Aralığı:</strong> <span class="price">100-200 TL</span> (kraliçe karınca başına)</p>
+        </div>
+        
+        <h2>Karınca Bulabileceğiniz Ortamlar</h2>
+        
+        <div class="habitat-list">
+            <div class="habitat-card">
+                <h4>1. Parklar ve Bahçeler</h4>
+                <p>Lasius ve Formica türleri sık görülür. Özellikle ağaç diplerinde, çimlerin altında ve taşların altında koloniler bulunabilir.</p>
+            </div>
+            
+            <div class="habitat-card">
+                <h4>2. Ormanlık Alanlar</h4>
+                <p>Camponotus ve Formica kolonileri için ideal ortamlardır. Ölü ağaç gövdeleri ve yaprak döküntüleri altında araştırma yapabilirsiniz.</p>
+            </div>
+            
+            <div class="habitat-card">
+                <h4>3. Kurak Bölgeler</h4>
+                <p>Messor türleri için ideal. Kumlu ve kurak alanlarda, özellikle tohumların bulunduğu bölgelerde yuvalarını görebilirsiniz.</p>
+            </div>
+            
+            <div class="habitat-card">
+                <h4>4. Ev Bahçeleri</h4>
+                <p>Küçük Myrmica kolonileri sık görülür. Bitki saksılarının altı ve nemli toprak alanları kontrol edebilirsiniz.</p>
+            </div>
+            
+            <div class="habitat-card">
+                <h4>5. Ahşap Yapılar</h4>
+                <p>Camponotus türleri odunlara yuva yapabilir. Eski ahşap mobilyalarda, çitlerde ve bina kerestelerinde izlerini görebilirsiniz.</p>
+            </div>
+        </div>
+        
+        <h2>Satın Alma ve Bakım Bilgileri</h2>
+        
+        <div class="purchase-info">
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Ürün/Hizmet</th>
+                        <th>Açıklama</th>
+                        <th>Fiyat Aralığı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kraliçe Karınca</td>
+                        <td>Tek başına veya birkaç işçiyle birlikte satılır</td>
+                        <td class="price">50-400 TL</td>
+                    </tr>
+                    <tr>
+                        <td>Başlangıç Kolonileri</td>
+                        <td>1 kraliçe + 5-10 işçi karınca</td>
+                        <td class="price">200-600 TL</td>
+                    </tr>
+                    <tr>
+                        <td>Profesyonel Koloniler</td>
+                        <td>100+ işçili gelişmiş koloniler</td>
+                        <td class="price">1000-3000 TL</td>
+                    </tr>
+                    <tr>
+                        <td>Akrilik Karınca Çiftlikleri</td>
+                        <td>Farklı boyutlarda yaşam alanları</td>
+                        <td class="price">150-800 TL</td>
+                    </tr>
+                    <tr>
+                        <td>Besin Setleri</td>
+                        <td>Karınca yemleri ve besin takviyeleri</td>
+                        <td class="price">30-150 TL</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="fun-fact">
+                <strong>Önemli Not:</strong> Karınca ticareti yapmak için Tarım ve Orman Bakanlığı'ndan gerekli izinleri almanız gerekmektedir. Yerli türlerin doğadan toplanması yasaktır, satın alınan karıncalar yetiştiricilerden temin edilmelidir. Karınca beslemek sabır ve özen gerektiren bir hobidir. Lütfen karıncaların doğal yaşam döngüsüne saygı gösterin.
+            </div>
+            
+            <h3>Karınca Bakımı İçin İpuçları</h3>
+            <ul>
+                <li>Karıncalarınız için uygun büyüklükte bir yaşam alanı seçin</li>
+                <li>Ortam sıcaklığını türün ihtiyaçlarına göre ayarlayın (genellikle 20-28°C)</li>
+                <li>Nem seviyesini düzenli olarak kontrol edin</li>
+                <li>Türün beslenme alışkanlıklarına uygun yemler verin</li>
+                <li>Koloniyi sık sık rahatsız etmeyin, özellikle yeni kurulan kolonilerde</li>
+                <li>Düzenli olarak temizlik yapın ama kimyasal temizleyici kullanmayın</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Karmeel Dünyası - Tüm Hakları Saklıdır</p>
+        <p>Karınca sevgisi doğa sevgisidir!</p>
+    </footer>
 </body>
 </html>
