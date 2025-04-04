@@ -88,7 +88,7 @@ body {
 /* Hero Bölümü */
 .hero {
     height: 100vh;
-    background: url('karıncaarkaplan.webp') no-repeat center center/cover;
+    background: url('img/karıncaarkaplan.webp') no-repeat center center/cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
