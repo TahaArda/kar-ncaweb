@@ -29,4 +29,4 @@ Tüm hakları saklıdır. Bu proje, kişisel kullanım için ücretsizdir, ancak
 
 ## İletişim
 Sorularınız veya önerileriniz için bize ulaşabilirsiniz:
-- E-Posta: ...
+- E-Posta: Sumeyyekacmaz176@gmail.com
