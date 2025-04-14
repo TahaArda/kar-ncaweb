@@ -16,5 +16,107 @@
             <li><a href="iletisim.html">İletişim</a></li>
         </ul>
     </nav>
+    <head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Karınca Eğlenceli Quiz</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <div class="quiz-container">
+
+    <!-- Quiz Başlangıç Butonları -->
+
+    <div class="quiz-box">
+
+      <h2>Karınca Bilgi Testi</h2>
+
+      <button class="start-btn" data-test="karincaTesti">Testi Başlat</button>
+
+    </div>
+
+    <div class="quiz-box">
+
+      <h2>Karınca Türünü Keşfet</h2>
+
+      <button class="start-btn" data-test="karincaTürü">Testi Başlat</button>
+
+    </div>
+
+    <div class="quiz-box">
+
+      <h2>Karınca Türlerini Tanıyabilir misin</h2>
+
+      <button class="start-btn" data-test="karincaTanima">Testi Başlat</button>
+
+    </div>
+
+    <div class="quiz-box">
+
+      <h2>Karınca Krallığını Yönet</h2>
+
+      <button class="start-btn" data-test="karincakrallik">Testi Başlat</button>
+
+    </div>
+
+    <div class="quiz-box">
+
+      <h2>Sen Hangi Karınca Kolonisinde yaşamalısın?</h2>
+
+      <button class="start-btn" data-test="karincakoloni">Testi Başlat</button>
+
+    </div>
+
+  </div>
+
+  <!-- Test Ekranı -->
+
+  <div id="quiz-screen" class="quiz-screen" style="display:none;">
+
+    <div id="question-container"></div>
+
+    <button id="submit-btn" style="display:none;">Gönder</button>
+
+  </div>
+
+  <div id="quiz-buttons-container">
+
+ 
+
+<button id="start-button" style="display: none;">Testi Başlat</button>
+
+  </div>
+
+  
+
+<div id="result-message" style="display: none;"> <p id="result-text"></p> </div>
+<div id="result-box" style="display: none; padding: 20px; border: 1px solid #ccc; margin-top: 20px;"></div>
+  
+
+  <div id="button-container">
+
+    <!-- Butonlar buraya gelecek -->
+
+</div>
+
+
+  
+
+  <script src="script.js"></script>
+
+  <img src="ant.png" alt="Karınca" class="ant" id="ant">
+
+</body>
+
+    </html>
+
+    
 </body>
 </html>
