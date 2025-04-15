@@ -5,6 +5,336 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="game.js"></script>
+    <style>
+      #start-button {
+
+display: none;
+
+}
+
+/* Genel Sayfa */
+
+body {
+
+font-family: 'Arial', sans-serif;
+
+background-color: #e6f7e1; /* Yumuşak açık yeşil arka plan */
+
+color: #333;  /* Metin rengi */
+
+margin: 0;
+
+padding: 0;
+
+box-sizing: border-box;
+
+background-image: url('https://example.com/karinca-arabasi.jpg'); /* Karınca temalı bir arka plan */
+
+background-size: cover;
+
+background-position: center;
+
+}
+
+h2 {
+
+color: #ff6f00; /* Başlık rengi (turuncu karınca teması) */
+
+font-size: 24px;
+
+text-align: center;
+
+font-weight: bold;
+
+}
+
+/* Quiz Box */
+
+.quiz-box {
+
+background-color: rgba(255, 255, 255, 0.8); /* Hafif şeffaf beyaz arka plan */
+
+border-radius: 15px;
+
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+margin: 20px;
+
+padding: 20px;
+
+max-width: 400px;
+
+margin: auto;
+
+position: relative;
+
+overflow: visible; /* overflow'ü visible yaparak emoji'nin görünmesini sağla */
+
+}
+
+/* Karınca ve doğal ögeler */
+
+.quiz-box::before {
+
+content: "🐜"; /* Karınca emoji ile giriş */
+
+font-size: 50px;
+
+position: absolute;
+
+top: -30px;
+
+right: 20px;
+
+z-index: 2; /* Karınca emoji'sinin üstte görünmesi için z-index ekledik */
+
+animation: ant-move 1s infinite alternate;
+
+}
+
+/* Başlat Butonu */
+
+.start-btn {
+
+background-color: #ff6f00; /* Turuncu buton rengi */
+
+color: white;
+
+border: none;
+
+padding: 10px 20px;
+
+font-size: 18px;
+
+font-weight: bold;
+
+border-radius: 5px;
+
+cursor: pointer;
+
+transition: background-color 0.3s ease;
+
+}
+
+.start-btn:hover {
+
+background-color: #ff4500; /* Hoverda daha koyu turuncu */
+
+}
+
+.start-btn:active {
+
+transform: scale(0.98); /* Tıklama efekti */
+
+}
+
+/* Quiz Soruları */
+
+.quiz-questions {
+
+margin-top: 20px;
+
+}
+
+.quiz-questions .question {
+
+margin-bottom: 20px;
+
+padding: 10px;
+
+background-color: #fff5e6; /* Hafif kırık beyaz arka plan */
+
+border: 1px solid #ff6f00;
+
+border-radius: 8px;
+
+}
+
+.quiz-questions p {
+
+font-size: 18px;
+
+font-weight: bold;
+
+}
+
+.quiz-questions ul {
+
+list-style: none;
+
+padding: 0;
+
+margin: 0; /* Yüksekliği sıfırladık */
+
+display: flex;
+
+flex-direction: column;
+
+gap: 10px; /* Şıklar arasına boşluk ekledik */
+
+}
+
+.quiz-questions li {
+
+margin: 0; /* Şıkların arasındaki boşluğu sıfırladık */
+
+}
+
+.quiz-questions .option-btn {
+
+background-color: #80c8ff; /* Açık mavi seçenekler */
+
+color: white;
+
+border: none;
+
+padding: 10px 20px;
+
+border-radius: 5px;
+
+width: 100%;
+
+font-size: 16px;
+
+cursor: pointer;
+
+transition: background-color 0.3s ease;
+
+}
+
+.quiz-questions .option-btn:hover {
+
+background-color: #4fa3ff; /* Seçeneklerin hover efekti */
+
+}
+
+.quiz-questions .option-btn:active {
+
+transform: scale(0.98); /* Seçenek tıklama efekti */
+
+}
+
+/* Sonuç Mesajı */
+
+#result-message-karincaTesti, #result-message-karincaTürü {
+
+margin-top: 20px;
+
+padding: 15px;
+
+background-color: #ffebcc; /* Yumuşak turuncu sonuç mesajı */
+
+border: 1px solid #ff6f00;
+
+border-radius: 10px;
+
+text-align: center;
+
+display: none;
+
+font-size: 18px;
+
+}
+.correct {
+
+color: green;
+
+font-weight: bold;
+
+}
+
+.incorrect {
+
+color: red;
+
+font-weight: bold;
+
+}
+
+/* Karınca Yürüyüş Animasyonu */
+
+@keyframes ant-move {
+
+0% {
+
+  transform: translateX(0);
+
+}
+
+50% {
+
+  transform: translateX(10px);
+
+}
+
+100% {
+
+  transform: translateX(0);
+
+}
+
+}
+/* Karınca simgesi animasyonu */
+
+.quiz-box::before {
+
+animation: ant-move 1s infinite alternate;
+
+}
+
+/* Karınca animasyonu */
+
+#ant-container {
+
+position: relative;
+
+height: 100px;
+
+display: flex;
+
+justify-content: center;
+
+margin-top: 50px;
+
+}
+
+#ant {
+
+font-size: 50px;
+
+position: absolute;
+
+left: -50px;
+
+animation: moveAnt 3s linear infinite;
+
+display: none; /* Başlangıçta gizli */
+
+}
+
+@keyframes moveAnt {
+
+0% {
+
+  left: -50px;
+
+}
+
+50% {
+
+  left: calc(100% - 50px); /* Ekranın sağ tarafına git */
+
+}
+
+100% {
+
+  left: -50px;
+
+}
+
+}
+    </style>
 </head>
 <body>
     <nav class="navbar">
