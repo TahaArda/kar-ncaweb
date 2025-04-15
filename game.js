@@ -109,111 +109,113 @@ doğru:"Fermon salgılayarak",
 
 };
 
+
+
 // Sonuç mesajları
+
+// Sonuçları hesaplayan fonksiyon
 
 function calculateResult(score, testType) {
 
-let resultMessage = "";
+  let resultMessage = "";
 
-if (testType === 'karincaTesti') {
+  if (testType === 'karincaTesti') {
 
-const totalQuestions= karincaTesti.questions.length;
+    const totalQuestions = karincaTesti.questions.length;
 
-if ( score === totalQuestions)
+if (score === totalQuestions) {
 
-{
+      resultMessage = "Mükemmel! Tüm soruları doğru yanıtladınız!";
 
-  
+    } else if (score >= 6) {
 
-resultMessage = "Mükemmel! Tüm soruları doğru yanıtladınız!";
+      resultMessage = "Harika! Karıncalar hakkında oldukça bilginiz var!";
 
-} else if (score >= 6) {
+    } else if (score >= 4) {
 
-  resultMessage = "Harika! Karıncalar hakkında oldukça bilginiz var!";
+      resultMessage = "İyi Gidiyorsunuz! Temel bilgilere sahipsiniz.";
 
-} else if (score >=4) {
+    } else {
 
-  resultMessage = "İyi Gidiyorsunuz! Temel bilgilere sahipsiniz."; 
+      resultMessage = "Başlangıç Seviyesi! Daha fazla bilgi edinmek için konuyu tekrar gözden geçirin.";
 
-} else {
+    }
 
-  resultMessage = "Başlangıç Seviyesi! Daha fazla bilgi edinmek için konuyu tekrar gözden geçirin."; 
+} else if (testType === 'test1') {
 
-} 
+    const totalQuestions = test1.length;
 
-} else if (testType === 'test1') 
+    if (score === totalQuestions) {
 
-{
+      resultMessage = "Mükemmel!";
 
-const totalQuestions= test1.length; 
+    } else {
 
-  if (score === totalQuestions) {  
+      resultMessage = "Biraz daha çalışmalısınız!";
 
-    resultMessage = "Mükemmel!"; 
+    }
 
-  } else { resultMessage = "Biraz daha çalışmalısınız!"; 
+  }
 
-         } 
-
-}
-
-return resultMessage;
+  return resultMessage;
 
 }
 
 // Start Quiz Fonksiyonu
 
+
 function startQuiz(testType) {
 
-let score = 0;
+  let score = 0;
 
-let questions = [];
+  let questions = [];
 
-if (testType === 'karincaTesti') {
+// Test tipi belirleniyor ve sorular yükleniyor
 
-questions = karincaTesti.questions; 
+  if (testType === 'karincaTesti') {
 
-} else if (testType === 'test1') { 
+    questions = karincaTesti.questions;
 
-  questions = test1; 
+  } else if (testType === 'test1') {
 
-}
+    questions = test1;
 
-//soraları dolaşarak cevapları kontrol et
+  }
 
-questions.forEach((question) => {
+// Soruları dolaşarak cevapları kontrol et
 
-const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+  questions.forEach((question) => {
 
-const userAnswer = selected ? selected.value : null;
+    const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
 
+    const userAnswer = selected ? selected.value : null;  
   
 
-  // Kullanıcı cevabını al 
+ // Kullanıcı cevabını al
 
-  if (userAnswer === question.dogru) { 
+    if (userAnswer === question.dogru) {
 
-  score++;
+      score++;  // Cevap doğruysa, puan artır
 
-} 
+    }
 
-});
+  });
+// Sonuç mesajını hesapla
 
-const resultMessage = calculateResult(score, testType);
+  const resultMessage = calculateResult(score, testType);
 
-document.getElementById('result-message').innerHTML = resultMessage;
+  // Sonuç kutusunu göster
 
+  const resultBox = document.getElementById("result-box");
 
-const resultBox = document.getElementById("result-box");
+  resultBox.style.display = "block";  // Kutu görünür hale gelsin
 
-resultBox.style.display = "block";  // Kutu görünür hale gelsin
+  resultBox.innerHTML = resultMessage;  // Sonuç mesajını kutuya ekle
 
-resultBox.innerHTML = resultMessage;  // Sonuç mesajını kutuya ekle
-  }
- //Testi başlatmak için fonksiyonu çağır
+}
+// Testi başlatmak için fonksiyonu çağır
 
-startQuiz('karincaTesti'); // Karınca Bilgi Testi başlatma
-
+startQuiz('karincaTesti');  // Karınca Bilgi Testi başlatma
 const karincaTürü = {
 
 testName:"Karınca Türünü Keşfet",
@@ -293,38 +295,59 @@ let cCount = 0;
 
 let dCount = 0;
 
-  karincaTürü.questions.forEach((question, index) => {
+  // Soruları döngü ile kontrol et
 
-        
+  karincaTürü.questions.forEach((question) => {
 
-        const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
- if (selected) {
+    const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
 
-    const userAnswer = selected.value;
-
-    // Cevap kontrolü burada yapılir
-
-}
-    
-const userAnswer = selected ? selected.value : null;
+    const userAnswer = selected ? selected.value : null;
        
 
         if (userAnswer) {
 
-            switch (userAnswer.toUpperCase()) {
-  
+      switch (userAnswer.toUpperCase()) {
 
-  case 'A': aCount++; break; case 'B': bCount++; break; case 'C': cCount++; break; case 'D': dCount++; break; default: alert("Geçersiz cevap!"); break; 
+        case 'A':
 
-}            
+          aCount++;
 
-}
+          break;
 
-});
+        case 'B':
 
-showkarincaTürüResult(aCount, bCount, cCount, dCount);
+          bCount++;
 
-}
+          break;
+
+        case 'C':
+
+          cCount++;
+
+          break;
+
+        case 'D':
+
+          dCount++;
+
+          break;
+
+        default:
+
+          alert("Geçersiz cevap!");
+
+          break;
+
+      }
+
+    }
+
+  });
+          
+// Sonuçları göster
+
+  showkarincaTürüResult(aCount, bCount, cCount, dCount);
+  }
 
 function showkarincaTürüResult(aCount, bCount, cCount, dCount) {
 
@@ -352,17 +375,24 @@ function showkarincaTürüResult(aCount, bCount, cCount, dCount) {
 
   // Sonuç mesajını HTML'de bir elemana ekle
 
-  console.log(document.getElementById('result-message')); // Bu null olmamalı
+  const resultBox = document.getElementById('result-box');
 
-document.getElementById('result-message').innerHTML = resultMessage;
-const resultBox = document.getElementById("result-box");
+  if (resultBox) {
 
-resultBox.style.display = "block";  // Kutu görünür hale gelir
+    resultBox.style.display = "block";  // Kutu görünür hale gelsin
 
-resultBox.innerHTML = resultMessage;  // Sonuç mesajı kutuya 
+    resultBox.innerHTML = resultMessage;  // Sonuç mesajını kutuya ekle
+
+  } else {
+
+    console.error('Result box bulunamadı!');
+
+  }
+
 }
 
 startkarincaTürü();
+
 const karincaTanima = {
 
 testName:"Karınca Türü Tanıma ",
@@ -427,7 +457,6 @@ karakter:["A", "B", "C", "D"]
 ]
 
 };
-
 // Sonuç mesajları
 
 function calculateResult(score, testType) {
@@ -436,7 +465,7 @@ function calculateResult(score, testType) {
 
   if (testType === 'karincaTanima') {
 
-const totalQuestions= karincaTanima.questions.length;
+    const totalQuestions = karincaTanima.questions.length;
 
    if (score === totalQuestions) {
 
@@ -456,7 +485,7 @@ const totalQuestions= karincaTanima.questions.length;
 
     }
 
-    } 
+  }
 
   return resultMessage;
 
@@ -464,50 +493,57 @@ const totalQuestions= karincaTanima.questions.length;
 
 function startQuiz(testType) {
 
-let score = 0;
+  let score = 0;
 
-let questions = [];
+  let questions = [];
 
 if (testType === 'karincaTanima') {
 
-questions = karincaTanima.questions; 
+    questions = karincaTanima.questions;
 
-} else if (testType === 'test1') { 
+  } else if (testType === 'test1') {
 
-  questions = test1; 
+    questions = test1;
 
-}
+  }
 
-//soraları dolaşarak cevapları kontrol et
+// Her soruyu kontrol et
 
-questions.forEach((question) => {
+  questions.forEach((question) => {
 
-const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+    const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
 
-const userAnswer = selected ? selected.value : null;
+    const userAnswer = selected ? selected.value : null;
+
+    if (userAnswer === question.dogru) {
+
+      score++;
+
+    }
+
+  });
   
 
-  // Kullanıcı cevabını al 
-
-  if (userAnswer === question.dogru) { 
-
-  score++;
-
-} 
-
-});
+  
 
 const resultMessage = calculateResult(score, testType);
 
-document.getElementById('result-message').innerHTML = resultMessage;
+  const resultBox = document.getElementById("result-box");
 
+  if (resultBox) {
 
-const resultBox = document.getElementById("result-box");
+    resultBox.innerHTML = resultMessage;
 
-resultBox.style.display = "block";  // Kutu görünür hale gelsin
+    resultBox.style.display = "block";
 
-resultBox.innerHTML = resultMessage;  // Sonuç mesajını kutuya ekle
+} else {
+
+    console.error("Sonuç kutusu bulunamadı. Lütfen HTML'de 'result-box' ID'li bir div ekle.");
+
   }
+
+
+  
 startQuiz('karincaTanima'); // Karınca Tanıma Testi başlatma
 
   const karincakrallik = {
@@ -616,40 +652,65 @@ let cCount = 0;
 
 let dCount = 0;
 
-karincakrallik.questions.forEach((question,index) => {
+// Soruları döngüyle kontrol et
 
-const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+  karincakrallik.questions.forEach((question, index) => {
 
-const userAnswer = selected ? selected.value : null;
-  if (userAnswer) {
+    // Kullanıcı cevabını seçtiği input elemanını bul
 
-switch (userAnswer.toUpperCase()) {
+    const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
 
-case 'A': aCount++; break; case 'B': bCount++; break; case 'C': cCount++; break; case 'D': dCount++; break; default: alert("Geçersiz cevap!"); break; 
+    const userAnswer = selected ? selected.value : null;
+  // Cevap seçildiyse, sayacı artır
 
-} 
+    if (userAnswer) {
 
-}
+      switch (userAnswer.toUpperCase()) {
 
-});
+        case 'A': aCount++; break;
 
-showkarincakrallikResult(aCount, bCount, cCount, dCount);
+        case 'B': bCount++; break;
+
+        case 'C': cCount++; break;
+
+        case 'D': dCount++; break;
+
+        default: 
+
+          alert("Geçersiz cevap!"); 
+
+          break;
+
+      }
+
+    }
+
+  });
+
+// Sonuçları göster
+
+  showkarincakrallikResult(aCount, bCount, cCount, dCount);
 
 }
 
 function showkarincakrallikResult(aCount, bCount, cCount, dCount) {
 
-let maxCount = Math.max(aCount, bCount, cCount, dCount);
+  let maxCount = Math.max(aCount, bCount, cCount, dCount);
 
-let resultMessage = "";
+  let resultMessage = "";
 
-if (maxCount === aCount) {
+// En yüksek sayıyı bul ve ona göre sonuç mesajını oluştur
 
-resultMessage = "Karınca Krallığı'nın lideri olarak oldukça dikkatli ve planlısınız. Kararlarınıza odaklanmış ve stratejik bir yaklaşıma sahipsiniz."; 
+  if (maxCount === aCount) {
+
+    resultMessage = "Karınca Krallığı'nın lideri olarak oldukça dikkatli ve planlısınız. Kararlarınıza odaklanmış ve stratejik bir yaklaşıma sahipsiniz.";
 
 } else if (maxCount === bCount) {
 
-resultMessage = "Krallıkta güçlü bir savunma stratejisine sahipsiniz. Koloniye liderlik ederken genellikle daha hızlı ve cesur hareket ediyorsunuz."; } else if (maxCount === cCount) { resultMessage = "Bir lider olarak daha pratik ve doğrudan çözümler tercih ediyorsunuz. Krallığınızı hızlıca yönetmeye eğilimlisiniz."; 
+resultMessage = "Krallıkta güçlü bir savunma stratejisine sahipsiniz. Koloniye liderlik ederken genellikle daha hızlı ve cesur hareket ediyorsunuz."; 
+} else if (maxCount === cCount) { 
+  
+resultMessage = "Bir lider olarak daha pratik ve doğrudan çözümler tercih ediyorsunuz. Krallığınızı hızlıca yönetmeye eğilimlisiniz."; 
 
 } else if (maxCount === dCount) {
 
@@ -657,14 +718,17 @@ resultMessage = "Koloniyi korumaya odaklanıyorsunuz. Kraliçe ve koloninin güv
 
 }
 
-document.getElementById('result-message').innerHTML = resultMessage;
-const resultBox = document.getElementById("result-box");
+// Sonuçları göster
 
-resultBox.style.display = "block";  // Kutu görünür hale gelsin
+  const resultBox = document.getElementById("result-box");
 
-resultBox.innerHTML = resultMessage;  // Sonuç mesajını kutuya ekle
-  
+  resultBox.style.display = "block";  // Kutu görünür hale gelsin
+
+  resultBox.innerHTML = resultMessage;  // Sonuç mesajını kutuya ekle
+
 }
+
+// Bu fonksiyonun çağrılmasını sağlayın
 
 startkarincakrallik();
 
@@ -723,47 +787,55 @@ seçenekler: ["Mükemmel organizasyon ve disiplin", "Keşif yetenekleri ve hız"
 ]
 
 };
+
 // Test fonksiyonları
 
 function startkarincakoloni() {
 
-console.log("karincakolonisi başatıldı!");
+  console.log("karincakolonisi başlatıldı!");
 
-let aCount = 0;
+  let aCount = 0;
 
-let bCount = 0;
+  let bCount = 0;
 
-let cCount = 0;
+  let cCount = 0;
 
-let dCount = 0;
+  let dCount = 0;
 
-karincakoloni.questions.forEach((question,index) => {
+karincakoloni.questions.forEach((question) => {
 
-const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
+    const selected = document.querySelector(`input[name="q${question.id}"]:checked`);
 
-const userAnswer = selected ? selected.value : null;
+    const userAnswer = selected ? selected.value : null;
 
   if (userAnswer) {
 
-switch (userAnswer.toUpperCase()) {
+      switch (userAnswer.toUpperCase()) {
 
-case 'A': aCount++; break; case 'B': bCount++; break; case 'C': cCount++; break; case 'D': dCount++; break; default: alert("Geçersiz cevap!"); break; 
+        case 'A': aCount++; break;
 
-} 
+        case 'B': bCount++; break;
 
-}
+        case 'C': cCount++; break;
 
-});
+        case 'D': dCount++; break;
 
+        default: alert("Geçersiz cevap!"); break;
+
+      }
+
+    }
+
+  });
 showkarincakoloniResult(aCount, bCount, cCount, dCount);
 
 }
 
 function showkarincakoloniResult(aCount, bCount, cCount, dCount) {
 
-let maxCount = Math.max(aCount, bCount, cCount, dCount);
+  let maxCount = Math.max(aCount, bCount, cCount, dCount);
 
-let resultMessage = "";
+  let resultMessage = "";
 
 if (maxCount === aCount) {
 
@@ -783,16 +855,92 @@ resultMessage = "En çok C şıkkını seçtiniz! Karıncaların davranışları
 
 }
 
-document.getElementById('result-message').innerHTML = resultMessage;
 const resultBox = document.getElementById("result-box");
 
-resultBox.style.display = "block";  // Kutu görünür hale gelsin
+  if (resultBox) {
 
-resultBox.innerHTML = resultMessage;  // Sonuç mesajını kutuya ekle
+    resultBox.style.display = "block";
+
+    resultBox.innerHTML = resultMessage;
+
+  } else {
+
+    console.warn("result-box bulunamadı. HTML'ye eklemeyi unutma.");
+
+  }
+
 }
 
 startkarincakoloni();
-var currentTestQuestions = null; // Değişkeni tanımlayın
+let currentTestQuestions = null; // Değişkeni tanımlayın
+let isBilgiTesti = false;
+
+let testType = '';
+let correctAnswers = 0;
+
+let totalQuestions = 0;
+
+// Tüm testler tanımlandıktan sonra:
+
+function startkarincaTestiTest() {
+
+  testType = 'karincaTesti';
+
+  isBilgiTesti = true;
+
+  currentTestQuestions = karincaTesti.questions;
+
+  displayQuestions(currentTestQuestions);
+
+}
+
+function startkarincaTürüTest() {
+
+  testType = 'karincaTürü';
+
+  isBilgiTesti = false;
+
+  currentTestQuestions = karincaTürü.questions;
+
+  displayQuestions(currentTestQuestions);
+
+}
+
+function startkarincaTanimaTest() {
+
+  testType = 'karincaTanima';
+
+  isBilgiTesti = true;
+
+  currentTestQuestions = karincaTanima.questions;
+
+  displayQuestions(currentTestQuestions);
+
+}
+function startkarincakrallikTest() {
+
+  testType = 'karincakrallik';
+
+  isBilgiTesti = false;
+
+  currentTestQuestions = karincakrallik.questions;
+
+  displayQuestions(currentTestQuestions);
+
+}
+function startkarincakoloniTest() {
+
+  testType = 'karincakoloni';
+
+  isBilgiTesti = false;
+
+  currentTestQuestions = karincakoloni.questions;
+
+  displayQuestions(currentTestQuestions);
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
   const buttons = document.querySelectorAll('.start-btn');
@@ -803,7 +951,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     button.addEventListener('click', function () {
 
-      const testType = this.getAttribute('data-test');
+      testType = this.getAttribute('data-test'); // const kaldırıldı
 
       const questions = getQuestionsByType(testType);
 
@@ -834,6 +982,7 @@ console.log("Test için gelen sorular:", questions);
   });
 
 });
+
 // Test Başlatma Fonksiyonu
 
 function startQuiz(testType) {
@@ -924,7 +1073,7 @@ function displayQuestions(testType, questions) {
 
   console.log('Display ediliyor:', testType, questions);
 
-currentTestQuestions = questions;
+let currentTestQuestions = questions;
   const questionContainer = document.getElementById('question-container');
 
   questionContainer.innerHTML = ''; // Temizle
@@ -980,33 +1129,66 @@ function loadTest(testType) {
   displayQuestions(testType, currentTestQuestions);
 
 }
- // Gönder butonunu göster
+
+
+  // Gönder butonunu göster
 console.log(currentTestQuestions);
 
 const submitBtn = document.getElementById('submit-btn');
 
 if (submitBtn) {
 
-  submitBtn.style.display = 'block'; // Butonu görünür yap
+  submitBtn.style.display = 'block';
 
   submitBtn.onclick = function () {
 
-    evaluateQuiz(currentTestQuestions); // Testi değerlendir
+    // Sadece bilgi testleri için evaluateQuiz çalıştır
+
+    if (isBilgiTesti) {
+
+      evaluateQuiz(currentTestQuestions, testType);
+
+    const resultBox = document.getElementById("result-box");
+
+      resultBox.style.display = "block";
+
+      resultBox.innerHTML = `Test tamamlandı! Doğru sayınız: ${correctAnswers} / ${totalQuestions}`;
+
+      } else {
+
+      // Kişilik testleri için ilgili fonksiyonları çağır
+
+      if (testType === 'karincaTürü') {
+
+        startkarincaTürü();
+
+      } else if (testType === 'karincakrallik') {
+
+        startkarincakrallik();
+
+      } else if (testType === 'karincakoloni') {
+
+        startkarincakoloni();
+
+      }
+
+    }
 
   };
-
 } else {
 
   console.error('submit-btn ID\'sine sahip bir buton bulunamadı.');
 
 }
+
 //Test sonucu degerlendirme
 function evaluateQuiz(questions, testType) {
 
   console.log("Quiz için gelen sorular:", questions);
 
   let correctAnswers = 0;
-let totalQuestions = questions.length;
+
+  let totalQuestions = questions.length;
   if (!questions || !Array.isArray(questions)) {
 
     console.error("Geçersiz ya da boş soru listesi!");
@@ -1018,69 +1200,154 @@ let totalQuestions = questions.length;
   const bilgiTestleri = ['karincaTesti', 'karincaTürü'];
 
   const isBilgiTesti = bilgiTestleri.includes(testType);
-
   questions.forEach((question) => {
 
     const selectedOption = document.querySelector(`input[name="q${question.id}"]:checked`);
-    const userAnswer = selectedOption ? selectedOption.value : null;
 
     if (selectedOption) {
 
       const selectedAnswerIndex = parseInt(selectedOption.value);
+   if (
 
-      const isCorrect = question.seçenekler[selectedAnswerIndex] === question.doğru;
+        question.seçenekler && // Seçenekler dizisinin tanımlı olduğuna emin olalım
 
-      if (isBilgiTesti) {
+        selectedAnswerIndex >= 0 && 
 
-        if (isCorrect) {
+        selectedAnswerIndex < question.seçenekler.length && // Seçilen cevap geçerli mi kontrol et
+     question.seçenekler[selectedAnswerIndex] // Seçilen cevap var mı diye kontrol et
+  ) {
+     // Doğru cevabın olup olmadığını kontrol et
 
-          selectedOption.parentElement.style.color = 'green';
+       // let correctAnswer = '';
 
-        } else {
+if (isBilgiTesti && question.doğru) {
 
-          selectedOption.parentElement.style.color = 'red';
+  correctAnswer = question.doğru.trim();
+
+}
+        // Eğer doğru cevap boş ise hata mesajı verebilirsin.
+
+        if (!correctAnswer) {
+
+          console.error(`Soru ID: ${question.id} için doğru cevap tanımlı değil!`);
+
+        }
+     
+  const userAnswer = question.seçenekler[selectedAnswerIndex].trim();
+
+        const isCorrect = userAnswer === correctAnswer;
+
+         if (isBilgiTesti) {
+
+          // Eğer doğru cevap ise
+
+          if (isCorrect) {
+
+            selectedOption.parentElement.classList.add('correct');
+
+            console.log("Doğru cevap işaretlendi:", question);
+      } else {
+
+            // Yanlış cevap ise
+
+            selectedOption.parentElement.classList.add('incorrect');
+
+            console.log("Yanlış cevap işaretlendi:", question);
+
+          }
 
         }
 
+        if (isCorrect) correctAnswers++;
+
       }
-      if (isCorrect) correctAnswers++;
 
     }
 
   });
-
-  if (isBilgiTesti) {
-
-    alert(`Doğru sayısı: ${correctAnswers}`);
-
   }
-
-
-        
  //sonuçları göster
 
-  const resultMessage = `Test bitti! Doğru cevabınız: ${correctAnswers}/${totalQuestions}`;
+  //const resultMessage = `Test bitti! Doğru cevabınız: ${correctAnswers}/${totalQuestions}`;
 
-   // Sonuç kutusunu ve metni göster
+// Gönder butonuna basınca Sonuç kutusu
 
-  const resultContainer = document.getElementById('result-message');
+// const submitBtn = document.getElementById('submit-btn'); // Bunu sil
 
-  resultContainer.style.display = 'block'; // Kutu görünür yap
+submitBtn = document.getElementById('submit-btn'); // Bunu yaz
 
- resultContainer.textContent = resultMessage;
-  // Anasayfaya dön 
+if (submitBtn) {
 
-  const homeButton = document.createElement('button');
+  submitBtn.style.display = 'block';
 
-  homeButton.textContent = 'Ana Sayfaya Dön';
+  submitBtn.onclick = function () {
 
-  homeButton.onclick = function() {
-     // window.location.reload();// Ana sayfaya geri dön
+    // Bilgi testi ise değerlendirme fonksiyonu çalıştırılır
 
-window.location.href = window.location.href;  // Sayfayı yeniden yükler
+    if (isBilgiTesti) {
+
+      evaluateQuiz(currentTestQuestions, testType);
+
+      const resultBox = document.getElementById("result-box");
+
+      resultBox.style.display = "block";
+
+      resultBox.innerHTML = `Test tamamlandı! Doğru sayınız: ${correctAnswers} / ${totalQuestions}`;
+
+    }
+
+    // Kişilik testleri için ilgili start fonksiyonu çağrılır
+
+    else {
+
+      switch (testType) {
+
+        case 'karincaTürü':
+
+          startkarincaTürü();
+
+          break;
+
+        case 'karincakrallik':
+
+          startkarincakrallik();
+
+          break;
+
+        case 'karincakoloni':
+
+          startkarincakoloni();
+
+          break;
+
+        default:
+
+          console.warn('Bilinmeyen test tipi:', testType);
+
+      }
+
+    }
 
   };
 
-  document.body.appendChild(homeButton);
+} else {
 
-}
+  console.error('submit-btn ID\'sine sahip bir buton bulunamadı.');
+
+} 
+  
+  // Ana Sayfaya Dön butonu oluştur
+
+    const homeButton = document.createElement('button');
+
+    homeButton.textContent = 'Ana Sayfaya Dön';
+
+    homeButton.onclick = function () {
+
+      window.location.href = window.location.href; // Sayfayı yeniden yükler
+
+    };
+
+    document.body.appendChild(homeButton);
+
+  });
